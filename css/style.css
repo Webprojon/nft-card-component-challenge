@@ -1,0 +1,179 @@
+/* VARIABLES */
+:root {
+  /* Colors */
+  --body-bg: hsl(217, 54%, 11%);
+  --card-bg: hsl(216, 50%, 16%);
+  --card-bg-active: hsl(178, 100%, 50%);
+  --text-color-active: hsl(178, 100%, 50%);
+  --text-color-white: hsl(0, 0%, 100%);
+  --text-color-gray: hsl(215, 51%, 70%);
+  --trans: all 0.3s linear;
+  /* hsl(215, 32%, 27%) */
+
+  /* Fonts */
+  --body-font-family: "Outfit", sans-serif;
+}
+
+/* GENERAL CSS */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body-font-family);
+  background-color: var(--body-bg);
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.nft-preview-card__main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nft-preview__card {
+  width: 22.5rem;
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1.2rem;
+  cursor: pointer;
+  line-height: 1.2rem;
+}
+
+.card__img {
+  position: relative;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.card__img .nft__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--trans);
+}
+
+.card__img:hover .nft__img {
+  transform: scale(1.1);
+}
+
+.card__img:active::before {
+  transition: var(--trans);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hsl(178, 100%, 50%, 0.5);
+  z-index: 1;
+}
+
+.card__img:active::after {
+  transition: var(--trans);
+  content: url("../images/icon-view.svg");
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  z-index: 2;
+}
+
+.card__title {
+  font-size: 1.6rem;
+  color: var(--text-color-white);
+  margin-top: 1.5rem;
+}
+
+.card__title:active {
+  color: var(--text-color-active);
+  transition: var(--trans);
+}
+
+.card__description {
+  color: var(--text-color-gray);
+  font-weight: 300;
+}
+
+.card__status {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon__text {
+  display: flex;
+  align-items: center;
+}
+
+.icon__text:first-child {
+  color: var(--text-color-active);
+}
+
+.icon__text {
+  color: var(--text-color-gray);
+  font-weight: 400;
+}
+
+.icon {
+  padding-right: 0.4rem;
+}
+
+.horizontal__line {
+  width: 100%;
+  height: 0.1px;
+  background-color: var(--text-color-gray);
+  margin: 1rem 0;
+}
+
+.card__user {
+  display: flex;
+  align-items: center;
+}
+
+.card-user__img {
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-right: 0.7rem;
+  border: 1px solid var(--text-color-white);
+  border-radius: 50%;
+}
+
+.card-user__desc {
+  color: var(--text-color-gray);
+  font-weight: 500;
+}
+
+.card-user__name {
+  color: var(--text-color-white);
+  font-weight: 550;
+}
+
+.card-user__name:active {
+  color: var(--text-color-active);
+  transition: var(--trans);
+}
+
+@media only screen and (max-width: 375px) {
+  html {
+    font-size: 80%;
+  }
+
+  .nft-preview__card {
+    width: 88%;
+  }
+}
